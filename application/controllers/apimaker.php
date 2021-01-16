@@ -39,7 +39,7 @@ class Apimaker extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index() {
+    public function loadIndex() {
 //         this method was calling again and again by list so applied logic here
         if ($this->session->userdata('logged_in')) {
             $this->session->unset_userdata('view');
