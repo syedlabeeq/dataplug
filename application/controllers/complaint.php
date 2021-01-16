@@ -370,9 +370,9 @@ class Complaint extends CI_Controller {
                                 $this->data['error'] = $this->upload->display_errors();
                                 $this->session->set_flashdata('validate', array('message' => $this->upload->display_errors(), 'type' => 'warning'));
                             } else {
-                                $imageData = $this->upload->data();
-                                $fileName = $imageData['file_name'];                                
-                                $image_array=array('cp_photo'=>$fileName);
+                                $image_Data = $this->upload->data();
+                                $file_Name = $image_Data['file_name'];                                
+                                $image_array=array('cp_photo'=>$file_Name);
                             }
                         }
 
