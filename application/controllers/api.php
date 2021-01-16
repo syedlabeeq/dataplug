@@ -394,7 +394,7 @@ class Api extends CI_Controller {
      * @return json
      * @author Zahid Nadeem <zahidiubb@yahoo.com>
      */
-    public function saverecords() {
+    public function saveRecords() {
 
         $form_data = json_decode($_REQUEST ['form_data']);
         $imei_no = $_REQUEST ['imei_no'];
@@ -1108,7 +1108,7 @@ class Api extends CI_Controller {
         echo json_encode($jsone_array);
         exit();
     }
-    public function saverecordscron() {
+    public function saveRecordscron() {
         //ob_get_level();
         //ob_start();
         ini_set ( 'memory_limit', '-1' );
@@ -1382,7 +1382,7 @@ class Api extends CI_Controller {
         
     }
 
-    public function saverecordsharzindagi() {
+    public function saveRecordsharzindagi() {
         $form_data = json_decode($_REQUEST['form_data'],true);
         $form_id=$form_data['form_id'];
         $imei_no=$form_data['imei_no'];
@@ -1616,7 +1616,7 @@ class Api extends CI_Controller {
      * @return json
      * @author Zahid Nadeem <zahidiubb@yahoo.com>
      */
-    public function saverecordsweb() {
+    public function saveRecordsweb() {
         $form_data = json_decode($_REQUEST ['form_data']);
 
         $session_data = $this->session->userdata('web_logged_in');
@@ -2162,7 +2162,7 @@ class Api extends CI_Controller {
      */
     // http://www.dataplug.itu.edu.pk/api/getoptionapi?api=1&secret=fdkj378jk3g
     // http://www.dataplug.itu.edu.pk/api/getoptionapi?api=2&secret=k4743mn7hjr
-    public function getoptionapi() {
+    public function getOptionApi() {
         $api = $this->input->get('api');
         $secret = $this->input->get('secret');
         $query = $this->db->query("SELECT * FROM api WHERE id = '$api' AND secret_key='$secret'");
