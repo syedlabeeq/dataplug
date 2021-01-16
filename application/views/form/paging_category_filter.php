@@ -62,7 +62,7 @@ $url .= '&selected_dc=' . $selected_dc;
 $url .= '&search_text=' . $search_text . '&';
 
 $config['base_url'] = $url;
-$config['total_rows'] = $TotalRec;
+$config['total_rows'] = $totalRows;
 $config['per_page'] = $perPage;
 $config['postVar'] = 'page';
 
