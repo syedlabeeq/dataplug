@@ -290,7 +290,7 @@ class Api extends CI_Controller {
      * @return json
      * @author Zahid Nadeem <zahidiubb@yahoo.com>
      */
-    public function syncdevice() {
+    public function syncDevice() {
         $version_code = $_REQUEST ['version_code'];
         $app_id = $_REQUEST ['app_id'];
         $imei_no = $_REQUEST ['imei_no'];
