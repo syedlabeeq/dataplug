@@ -71,7 +71,7 @@ class Apimaker extends CI_Controller {
         }
     }
 
-    public function createurl($slug) {
+    public function createUrl($slug) {
 //         this method was calling again and again by list so applied logic here
         if ($this->session->userdata('logged_in')) {
             $this->session->unset_userdata('view');
@@ -108,7 +108,7 @@ class Apimaker extends CI_Controller {
             redirect(base_url() . 'guest');
         }
     }
-    public function apiappurl($slug) {
+    public function apiAppUrl($slug) {
 //         this method was calling again and again by list so applied logic here
         //exit;
         if ($this->session->userdata('logged_in')) {
