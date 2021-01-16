@@ -2370,7 +2370,7 @@ class Api extends CI_Controller {
     }
 
     //for hospital watch app
-    public function hospitalwatchapi() {
+    public function hospitalWatchApi() {
         //if (isset($_REQUEST['app_id']) && isset($_REQUEST['last_date_stamp']) && isset($_REQUEST['security_token'])) {
         if (isset($_REQUEST['app_id'])) {
             $app_id = $_REQUEST['app_id'];
