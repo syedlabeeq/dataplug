@@ -7,7 +7,7 @@ class Common extends CI_Controller {
         parent::__construct();
     }
 
-    public function get_image_to_display(){
+    public function getImageToDisplay(){
         header('Content-Type: image/png');
         $image_name = image_name_decode($_GET['img']);
         readfile($image_name);
