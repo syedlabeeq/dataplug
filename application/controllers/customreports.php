@@ -206,7 +206,7 @@ class Customreports extends CI_Controller {
      */
 
 
-    public function exportdistrictreport($slug) {
+    public function exportDistrictReport($slug) {
 
         $form_id = $slug;
         $selected_form = $this->form_model->get_form($slug);
@@ -526,7 +526,7 @@ class Customreports extends CI_Controller {
      * @return  void
      * @author UbaidUllah Balti <ubaidcskiu@gmail.com>
      */
-    public function monthwisereport($slug) {
+    public function monthWiseReport($slug) {
         ini_set('memory_limit', '-1');
         $slug_array = array();
         $slug_array = explode('-', $slug);
@@ -1005,7 +1005,7 @@ class Customreports extends CI_Controller {
      * @return  void
      * @author UbaidUllah Balti <ubaidcskiu@gmail.com>
      */
-    public function graph_type($slug) {
+    public function graphType($slug) {
         $slug_array = array();
         $slug_array = explode('-', $slug);
         $slug_id = $slug_array[count($slug_array) - 1];
@@ -1076,7 +1076,7 @@ class Customreports extends CI_Controller {
      * @return  void
      * @author UbaidUllah Balti <ubaidcskiu@gmail.com>
      */
-    public function single_user_graph($slug) {
+    public function singleUserGraph($slug) {
         $slug_array = array();
         $slug_array = explode('-', $slug);
         $slug_id = $slug_array[count($slug_array) - 1];
@@ -1154,7 +1154,7 @@ class Customreports extends CI_Controller {
      * @return  void
      * @author UbaidUllah Balti <ubaidcskiu@gmail.com>
      */
-    public function single_category_graph($slug) {
+    public function singleCategoryGraph($slug) {
 
         $category_name = $this->input->post('category_name');
         $filter_attribute = $this->input->post('filter_attribute');
@@ -1233,7 +1233,7 @@ class Customreports extends CI_Controller {
      * @return  void
      * @author UbaidUllah Balti <ubaidcskiu@gmail.com>
      */
-    public function get_category_list($slug) {
+    public function getCategoryList($slug) {
         $form_id = $slug;
         $selected_form = $this->form_model->get_form($form_id);
 //        echo "<pre>";
@@ -1340,7 +1340,7 @@ class Customreports extends CI_Controller {
         return $data[] = $data;
     }
 
-    public function exportschoolreport($slug) {
+    public function exportSchoolReport($slug) {
 
         $form_id = $slug;
         $selected_form = $this->form_model->get_form($slug);
