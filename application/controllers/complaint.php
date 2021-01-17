@@ -124,7 +124,7 @@ class Complaint extends CI_Controller {
 
 
         //create application icon for datatable view...
-    public function create_icon_image($image,$c_id){
+    public function createIconImage($image,$c_id){
         $result='';
         if ($image) {
         $result='
@@ -527,7 +527,7 @@ class Complaint extends CI_Controller {
     }
     
 
-    public function change_status(){
+    public function changeStatus(){
         $complaint_id = $_REQUEST['complaint_id'];
         $status = "Change status as ".$_REQUEST['c_status'];
         $description = $_REQUEST['c_description'];
@@ -552,7 +552,7 @@ class Complaint extends CI_Controller {
         redirect(base_url() . 'complaintSystem');
     }
 
-    public function create_action_buttons($app)
+    public function createActionButtons($app)
     {
         $complaint_id=$app['c_id'];
         $result='';
@@ -567,7 +567,7 @@ class Complaint extends CI_Controller {
         return $result;
     }
 
-    public function send_email_telco()
+    public function sendEmailTelco()
     {
 
         $complaint_id = $_REQUEST['complaint_id'];
@@ -615,7 +615,7 @@ class Complaint extends CI_Controller {
 
         redirect(base_url()."view-complaint/".$complaint_id);
     }
-    public function get_app_user_ajax()
+    public function getAppUserAjax()
     {
 
         $app_id = $_REQUEST['app_id'];
@@ -632,7 +632,7 @@ class Complaint extends CI_Controller {
         exit;
     }
 
-    public function get_complaints_by(){
+    public function getComplaintsBy(){
 
         $complaint_by_data = $this->complaint_model->get_complaint_by_all();
 
@@ -644,7 +644,7 @@ class Complaint extends CI_Controller {
         exit;
     }    
 
-    public function get_application_all(){
+    public function getApplicationAll(){
 
         $complaint_by_data = $this->complaint_model->get_applications_all();
         $string = array();
