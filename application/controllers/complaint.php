@@ -21,7 +21,7 @@ class Complaint extends CI_Controller {
         $this->load->model('form_results_model');
     }
     
-    public function index() {
+    public function loadIndex() {
 
 
         
