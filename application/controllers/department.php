@@ -40,7 +40,7 @@ class Department extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index() {
+    public function loadIndex() {
         if ($this->session->userdata('logged_in')) {
             if (!$this->acl->hasPermission('department', 'view')) {
                 $this->session->set_flashdata('validate', array('message' => "You don't have enough permissions to do this task.", 'type' => 'warning'));
