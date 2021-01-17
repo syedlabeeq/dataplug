@@ -16,12 +16,12 @@ class Cron extends CI_Controller {
         $this->load->model('form_results_model');
     }
 
-    public function run_custom(){
+    public function runCustom(){
 
         $this->post_missing_activity_record(true);
 
     }
-    public function run_every_hour()
+    public function runEveryHour()
     {
         ignore_user_abort(1);
         set_time_limit(0);
@@ -68,7 +68,7 @@ class Cron extends CI_Controller {
         exit;
     }       
 
-    public function post_missing_activity_record(){
+    public function postMissingActivityRecord(){
         ini_set ( 'memory_limit', '-1' );
         ini_set('max_execution_time', 0);
         $datetime = date('Y-m-d H:i:s', strtotime("-3 hours"));
@@ -436,7 +436,7 @@ class Cron extends CI_Controller {
     }
 
 
-    public function image_move_in_local_folder(){
+    public function imageMoveInLocalFolder(){
 
         //unlink('/NFS-Dataplug/images/immmm.jpg');
         //unlink('/NFS-Dataplug/images/1998/27c7a6f7f7aaf0349cadd7386a0b16ef.jpg');
@@ -513,7 +513,7 @@ class Cron extends CI_Controller {
         echo "<br>File transfered failed and deleted = ".$count_fail;
     }    
 
-    public function image_move_nfs_to_nfs(){
+    public function imageMoveNfsToNfs(){
 
         //unlink('/NFS-Dataplug/images/immmm.jpg');
         //unlink('/NFS-Dataplug/images/1998/27c7a6f7f7aaf0349cadd7386a0b16ef.jpg');
