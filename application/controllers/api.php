@@ -258,7 +258,7 @@ class Api extends CI_Controller {
         );
         $app_general_setting = get_app_general_settings($app_id);
         $prefrences = array();
-        if(isset($app_general_setting->has_geo_fencing)){
+        if(isset($app_general_setting->has_geo_fencing)) {
             
             $prefrences['IS_SECURE_APP']=($app_general_setting->secured_apk==1)?'YES':'NO';
             $prefrences['showHighResOption']=($app_general_setting->high_resolution_image==1)?'YES':'NO';
@@ -275,8 +275,8 @@ class Api extends CI_Controller {
             //Get geoFence from App user table
             $prefrences['geoFence']="[{'lng':74.33375,'lat':31.50282},{'lng':72.32271,'lat':31.49976},{'lng':74.3286,'lat':31.48541},{'lng':74.3474,'lat':30.48577},{'lng':74.33764,'lat':34.5049}]";
             
-        }
-        else{
+            
+        }else{
             $prefrences = new stdClass();
         }
         $p = array('preferences' => $prefrences);
@@ -302,7 +302,6 @@ class Api extends CI_Controller {
         $already_installed = $this->app_installed_model->get_app_installed($app_id, $imei_no);
 
         if ($already_installed) {
-
             //Update the version and datatime
             $created_datetime = date('Y-m-d H:i:s');
             $install_array = array(
@@ -396,6 +395,7 @@ class Api extends CI_Controller {
      */
     public function saveRecords() {
 
+        
         $form_data = json_decode($_REQUEST ['form_data']);
         $imei_no = $_REQUEST ['imei_no'];
         $location = $_REQUEST ['location'];
@@ -406,7 +406,7 @@ class Api extends CI_Controller {
             $replacement = '$1-$2-$3 $4:$5:$6';
             $activity_datetime = preg_replace($pattern, $replacement, $dateTime_device);
             $activity_datetime = date('Y-m-d H:i:s', strtotime($activity_datetime));
-        } else if (strpos($dateTime_device, '/') < 12) {
+        } elseif (strpos($dateTime_device, '/') < 12) {
             $pattern = '#(\d+)/(\d+)/(\d+) (\d+):(\d+):(\d+)#';
             $replacement = '$1-$2-$3 $4:$5:$6';
             $activity_datetime = preg_replace($pattern, $replacement, $dateTime_device);
@@ -458,9 +458,9 @@ class Api extends CI_Controller {
 //        }
         
         //If form removed but user not update his application
-        try{
+        try {
             $form_info = $this->form_model->get_form($form_id);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             $jsone_array = array(
                 'error' => $e->message()
             );
@@ -519,7 +519,7 @@ class Api extends CI_Controller {
             exit();
         }
         
-        if($imei_no!==''){
+        if ($imei_no!=='') {
             $authorized = $this->app_model->appuser_imei_already_exist($imei_no, $app_id);
             if (isset($app_general_setting->only_authorized) && $app_general_setting->only_authorized == 1 && !$authorized) {
                 $jsone_array = array(
@@ -576,18 +576,18 @@ class Api extends CI_Controller {
                     }
                     $record[$key] = 'SHOW RECORDS';
                 }
-            } else if ($cap_first [0] == 'caption') {
+            } elseif ($cap_first [0] == 'caption') {
                 $captions_images[$key] = $v;
-            } else if ($key == 'caption_sequence') {
+            } elseif ($key == 'caption_sequence') {
                 $caption_sequence = urldecode($v);
             } elseif ($key == 'form_id' || $key == 'row_key' || $key == 'security_key' || $key == "dateTime" || $key == "landing_page" || $key == "is_take_picture" || $key == 'form_icon_name') {
                 
             } else {
 
-                if(empty($form_info['security_key'])){
+                if (empty($form_info['security_key'])) {
                     $vdcode = urldecode(base64_decode($v));
                 }
-                else if(strpos($v, $form_info['security_key']) !== FALSE){
+                elseif(strpos($v, $form_info['security_key']) !== FALSE) {
                     $vdcode = urldecode(base64_decode(str_replace($form_info['security_key'], '', $v)));
                 }
                 else {
@@ -601,7 +601,7 @@ class Api extends CI_Controller {
             }
         }
 
-        if($form_id == '10601'){
+        if ($form_id == '10601') {
             $match_exist_field_value = $record['cardnumber'];
             //$activity_aready_exist = $this->db->get_where('zform_10601', array('cardnumber' => $match_exist_field_value))->row_array();
             $query=$this->db->query("select *
@@ -623,7 +623,7 @@ class Api extends CI_Controller {
 
         $warning_message = '';
         $app_map_view_setting = get_map_view_settings($app_id);
-        if(isset($app_map_view_setting->map_distance_mapping) && $app_map_view_setting->map_distance_mapping)//if Distance maping on then call this block
+        if (isset($app_map_view_setting->map_distance_mapping) && $app_map_view_setting->map_distance_mapping)//if Distance maping on then call this block
         {
             $rectemp = $record; 
 
@@ -635,7 +635,7 @@ class Api extends CI_Controller {
 
                     $matching_array_temp = array_merge($rectemp, $kkkkk);
                     $saved_distance=500;
-                    if($app_map_view_setting->distance !== ''){//if distance not given then default distance will assign as 500
+                    if ($app_map_view_setting->distance !== '') {//if distance not given then default distance will assign as 500
                         $saved_distance=$app_map_view_setting->distance;
                     }
 
@@ -652,7 +652,7 @@ class Api extends CI_Controller {
                     $matching_value = $matching_array_temp[$app_map_view_setting->matching_field]; //this field name getting from setting and getting value from received json
                     $kml_poligon_rec = $this->db->get_where('kml_poligon', array('app_id' => $app_id, 'type' => 'distence','matching_value' => $matching_value))->row_array();
                     
-                    if(!empty($kml_poligon_rec)){
+                    if (!empty($kml_poligon_rec)) {
                         $lat_long = explode(',', $location);//Received location from mobile device
                         $distance_from_center = lan_lng_distance($kml_poligon_rec['latitude'], $kml_poligon_rec['longitude'],$lat_long[0], $lat_long[1]);
                         if($distance_from_center > $saved_distance)
