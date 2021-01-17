@@ -209,7 +209,7 @@ class Department extends CI_Controller {
      * @param integer $department_id
      * @author Zahid Nadeem <zahidiubb@yahoo.com>
      */
-    function dep_already_exist() {
+    function depAlreadyExist() {
         $dep_name = trim($this->input->post('dep_name'));
         if ($this->department_model->department_already_exist($dep_name)) {
             echo true;
